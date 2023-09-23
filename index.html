@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semáforo</title>
+  <style>
+    .semaforo {
+      width: 100px;
+      height: 300px;
+      background: #333;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: 50px auto;
+    }
+
+    .luz {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .verde { background: green; }
+    .amarillo { background: yellow; }
+    .rojo { background: red; }
+  </style>
+</head>
+<body>
+  <div class="semaforo">
+    <div class="luz verde"></div>
+    <div class="luz amarillo"></div>
+    <div class="luz rojo"></div>
+  </div>
+  
+  <script>
+    function cambiarColor() {
+      const luces = document.querySelectorAll('.luz');
+      
+      // Cambiar a Amarillo
+      luces[0].classList.remove('verde');
+      luces[1].classList.add('amarillo');
+      setTimeout(() => {
+        luces[1].classList.remove('amarillo');
+        luces[2].classList.add('rojo');
+      }, 2000); // Mantener la luz Amarilla durante 2 segundos
+      
+      // Cambiar a Verde
+      setTimeout(() => {
+        luces[2].classList.remove('rojo');
+        luces[0].classList.add('verde');
+      }, 4000); // Mantener la luz Roja durante 2 segundos y luego cambiar a Verde
+    }
+    
+    setInterval(cambiarColor, 6000); // Cambiar cada 6 segundos
+  </script>
+</body>
+</html>
